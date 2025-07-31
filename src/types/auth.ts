@@ -48,3 +48,25 @@ export interface LoginResponse {
   user: UserResponse;
   token: string;
 }
+
+export interface CreateTouristRequest {
+  email: string;
+  password: string;
+  confirmPassword: string;
+  firstName: string;
+  lastName: string;
+  phone?: string;
+  dateOfBirth?: string;
+  nationality?: string;
+  identityNumber?: string;
+}
+
+export interface TouristResponse {
+  id: string;
+  email: string;
+  role: string;
+  firstName: string;
+  lastName: string;
+  touristId?: string;
+}
+  

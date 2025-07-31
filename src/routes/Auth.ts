@@ -1,14 +1,17 @@
 import { Router } from 'express';
 import AuthController from '../controllers/Auth';
-import { authenticate, requireAdmin } from "../middlewares/Auth";
+import { authenticate, requireAdmin, requireEmployee  } from "../middlewares/Auth";
 import { validate } from '../middlewares/validate';
-import { RegisterSchema, LoginSchema } from '../validators/auth.validator';
+import { RegisterSchema, LoginSchema, createTouristSchema } from '../validators/auth.validator';
 
 const router = Router();
 
-router.post('/register', validate(RegisterSchema), AuthController.register);
 router.post('/login', validate(LoginSchema), AuthController.login);
 
+router.post('/tourist/register', validate(RegisterSchema), AuthController.touristRegister);
 router.post('/employee/register', authenticate, requireAdmin, validate(RegisterSchema), AuthController.employeeRegister);
+router.post('/employee/tourist-register', authenticate, requireEmployee, validate(createTouristSchema), AuthController.touristRegisterByEmployee);
+router.post('/employee/tourist-approve/:id', authenticate, requireEmployee, AuthController.approveTourist);
+
 
 export default router;

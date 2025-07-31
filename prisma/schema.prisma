@@ -64,7 +64,7 @@ model Tourist {
 
   dateOfBirth      DateTime?
   nationality      String?
-  passportNumber   String?
+  identityNumber   String?
   emergencyContact String?
 
   address          Address?    @relation(fields: [addressId], references: [id])

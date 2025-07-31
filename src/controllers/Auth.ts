@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import AuthService from '../services/Auth';
-import { RegisterRequestBody, LoginRequestBody } from "../types/auth";
+import { RegisterRequestBody, LoginRequestBody, CreateTouristRequest } from "../types/auth";
 import { ApiResponse } from '../types/index';
 
 class AuthController {
@@ -18,10 +18,25 @@ class AuthController {
             next(error)
         }
     }
-    static async register(req: Request<{}, {}, RegisterRequestBody>, res: Response<ApiResponse>, next: NextFunction) {
+    static async touristRegister(req: Request<{}, {}, RegisterRequestBody>, res: Response<ApiResponse>, next: NextFunction) {
         try {
             const data: RegisterRequestBody = req.body;
             const registered = await AuthService.registerTourist(data);
+            
+            res.status(201).json({
+                success: true,
+                message: 'Register success',
+                data: registered
+            })
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    static async touristRegisterByEmployee(req: Request<{}, {}, CreateTouristRequest>, res: Response<ApiResponse>, next: NextFunction) {
+        try {
+            const data: CreateTouristRequest = req.body;
+            const registered = await AuthService.touristRegisterByEmployee(data);
             
             res.status(201).json({
                 success: true,
@@ -42,6 +57,21 @@ class AuthController {
                 success: true,
                 message: 'Login success',
                 data: logged
+            })
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    static async approveTourist(req: Request<{ id: string }>, res: Response<ApiResponse>, next: NextFunction) {
+        try {
+            const { id } = req.params;
+            const approved = await AuthService.approveTourist(id);
+
+            res.status(200).json({
+                success: true,
+                message: 'Tourist approved successfully',
+                data: approved
             })
         } catch (error) {
             next(error)

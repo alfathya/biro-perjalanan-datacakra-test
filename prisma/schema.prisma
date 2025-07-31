@@ -1,0 +1,156 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  admin
+  employee
+  tourist
+}
+
+enum MembershipLevel {
+  bronze
+  silver
+  gold
+  platinum
+}
+
+enum PaymentMethod {
+  cash
+  bank_transfer
+  credit_card
+  digital_wallet
+}
+
+enum PaymentStatus {
+  pending
+  paid
+  refunded
+}
+
+enum TripStatus {
+  planned
+  confirmed
+  cancelled
+}
+
+model User {
+  id           String        @id @default(uuid())
+  email        String        @unique
+  password     String
+  role         Role
+  firstName    String
+  lastName     String
+  phone        String?
+  isActive     Boolean       @default(true)
+  lastLogin    DateTime?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  // Relations
+  tourist      Tourist?
+  createdTrips Trip[]        @relation("TripCreatedBy")
+}
+
+model Tourist {
+  id               String      @id @default(uuid())
+  userId           String      @unique
+  user             User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  dateOfBirth      DateTime?
+  nationality      String?
+  passportNumber   String?
+  emergencyContact String?
+
+  address          Address?    @relation(fields: [addressId], references: [id])
+  addressId        String?     @unique
+
+  totalTrips       Int         @default(0)
+  totalSpent       Float       @default(0.0)
+  loyaltyPoints    Int         @default(0)
+  membershipLevel  MembershipLevel
+
+  trips            Trip[]
+
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @updatedAt
+}
+
+model Address {
+  id          String   @id @default(uuid())
+  street      String?
+  city        String?
+  state       String?
+  postalCode  String?
+  country     String?
+
+  tourist     Tourist?
+}
+
+model Trip {
+  id                        String        @id @default(uuid())
+  touristId                 String
+  tourist                   Tourist       @relation(fields: [touristId], references: [id])
+
+  destinationId             String
+  destination               Destination   @relation(fields: [destinationId], references: [id])
+
+  tanggalMulaiPerjalanan    DateTime
+  tanggalBerakhirPerjalanan DateTime
+  participants              Int
+  notes                     String?
+  specialRequests           String?
+
+  totalPrice                Float
+  status                    TripStatus    @default(planned)
+
+  payment                   Payment?      @relation(fields: [paymentId], references: [id])
+  paymentId                 String?       @unique
+
+  createdById               String
+  createdBy                 User          @relation("TripCreatedBy", fields: [createdById], references: [id])
+
+  rating                    Float?
+  review                    String?
+
+  createdAt                 DateTime      @default(now())
+  updatedAt                 DateTime      @updatedAt
+
+  @@index([destinationId])
+  @@index([status])
+}
+
+model Destination {
+  id          String   @id @default(uuid())
+  name        String
+  country     String?
+  city        String?
+  latitude    Float?
+  longitude   Float?
+  description String?
+  imageUrl    String?
+
+  trips       Trip[]
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Payment {
+  id            String        @id @default(uuid())
+  amount        Float
+  method        PaymentMethod
+  status        PaymentStatus @default(pending)
+  transactionId String?
+  paymentDate   DateTime?
+  notes         String?
+
+  trip          Trip?
+
+  createdAt     DateTime      @default(now())
+}

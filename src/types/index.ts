@@ -9,3 +9,40 @@ export interface ApiResponse<T = any> {
     limit: number;
   };
 }
+
+export interface TouristListItem {
+  id: string;
+  userId: string;
+  email: string;
+  name: string;
+  isActive: boolean;
+  phone?: string;
+  totalTrips: number;
+  totalSpent: number;
+  loyaltyPoints: number;
+  membershipLevel: string;
+  createdAt: Date;
+}
+
+export interface TouristDetail extends TouristListItem {
+  trips: Trip[];
+}
+
+export interface Trip {
+  id: string;
+  userId: string;
+  destination: string;
+  startDate: Date;
+  endDate: Date;
+  cost: number;
+  createdAt: Date;
+}
+
+export interface TripDetail extends Trip {
+  destination: string;
+  startDate: Date;
+  endDate: Date;
+  cost: number;
+  createdAt: Date;
+}
+  

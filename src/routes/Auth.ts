@@ -2,7 +2,7 @@ import { Router } from 'express';
 import AuthController from '../controllers/Auth';
 import { authenticate, requireAdmin, requireEmployee  } from "../middlewares/Auth";
 import { validate } from '../middlewares/validate';
-import { RegisterSchema, LoginSchema, createTouristSchema } from '../validators/auth.validator';
+import { RegisterSchema, LoginSchema, createTouristSchema } from "../validator/auth.validator";
 
 const router = Router();
 

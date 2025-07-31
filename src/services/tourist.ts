@@ -77,6 +77,33 @@ class TouristService {
         throw error
     }
   }
+
+  static async getTouristProfile (userID: string) {
+    try {
+        const tourists = await prisma.tourist.findUnique({
+            where: {
+                userId: userID,
+            },
+            include: {
+                user: {
+                    select: {
+                        id: true,
+                        email: true,
+                        firstName: true,
+                        lastName: true,
+                        phone: true,
+                        isActive: true,
+                        role: true,
+                    },
+                },
+            },
+        });
+
+        return tourists;
+    } catch (error) {
+        throw error
+    }
+  }
 }
 
 export default TouristService;

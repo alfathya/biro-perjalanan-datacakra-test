@@ -216,6 +216,10 @@ class AuthService {
         throw new ApiError("Invalid email or password", 401);
       }
 
+      if (!user.isActive) {
+        throw new ApiError("User is not active", 401);
+      }
+
       const token = jwt.sign(
         {
           id: user.id,

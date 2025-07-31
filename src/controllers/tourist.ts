@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction} from "express";
-import { ApiResponse } from "../types";
+import { ApiResponse } from "../types/index";
+import { UpdateTouristProfile } from "../types/auth";
 import TouristService from "../services/tourist";
 import { ApiError } from "../utils/apiError";
 
@@ -42,6 +43,27 @@ class TouristController {
                 throw new ApiError("User not found", 404);
             }
             const tourists = await TouristService.getTouristProfile(userID);
+            res.status(200).json({
+                success: true,
+                message: "Tourist list retrieved successfully",
+                data: tourists,
+            });
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    static async updateTouristProfile (req: Request<{}, {}, UpdateTouristProfile>, res: Response<ApiResponse>, next: NextFunction) {
+        try {
+            const userID = req.user?.id;
+            const data: UpdateTouristProfile = req.body;
+            if(!userID) {
+                throw new ApiError("User not found", 404);
+            }
+            const tourists = await TouristService.updateTouristProfile(
+              userID,
+              data,
+            );
             res.status(200).json({
                 success: true,
                 message: "Tourist list retrieved successfully",

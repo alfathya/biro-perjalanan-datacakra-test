@@ -69,4 +69,20 @@ export interface TouristResponse {
   lastName: string;
   touristId?: string;
 }
-  
+
+export interface UpdateTouristProfile {
+  firstName?: string;
+  lastName?: string;
+  phone?: string;
+  dateOfBirth?: string;
+  nationality?: string;
+  identityNumber?: string;
+  emergencyContact?: string;
+  address?: {
+    street?: string;
+    city?: string;
+    state?: string;
+    postalCode?: string;
+    country?: string;
+  };
+}

@@ -50,15 +50,23 @@ export interface LoginResponse {
 }
 
 export interface CreateTouristRequest {
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
   confirmPassword: string;
-  firstName: string;
-  lastName: string;
   phone?: string;
   dateOfBirth?: string;
   nationality?: string;
   identityNumber?: string;
+  emergencyContact?: string;
+  address?: {
+    street?: string;
+    city?: string;
+    state?: string;
+    postalCode?: string;
+    country?: string;
+  };
 }
 
 export interface TouristResponse {
@@ -78,6 +86,7 @@ export interface UpdateTouristProfile {
   nationality?: string;
   identityNumber?: string;
   emergencyContact?: string;
+  isActive?: boolean;
   address?: {
     street?: string;
     city?: string;

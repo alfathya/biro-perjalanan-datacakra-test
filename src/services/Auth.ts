@@ -133,6 +133,7 @@ class AuthService {
     data: CreateTouristRequest
   ): Promise<TouristResponse> {
     try {
+        console.log(data);
       const isEmailExist = await prisma.user.findUnique({
         where: {
           email: data.email,
@@ -156,41 +157,54 @@ class AuthService {
 
       const hashedPassword = await bcrypt.hash(data.password, 10);
 
-      const user = await prisma.user.create({
-        data: {
-          email: data.email,
-          password: hashedPassword,
-          firstName: data.firstName,
-          lastName: data.lastName,
-          phone: data.phone,
-          role: Role.tourist,
-          isActive: true,
-          tourist: {
-            create: {
-              membershipLevel: "bronze",
-              dateOfBirth: data.dateOfBirth
-                ? new Date(data.dateOfBirth)
-                : undefined,
-              nationality: data.nationality,
-              identityNumber: data.identityNumber,
-              totalTrips: 0,
-              totalSpent: 0,
-              loyaltyPoints: 0,
+
+      const createdUser = await prisma.$transaction(async (tx) => {
+        let addressId: string | undefined;
+        if (data.address) {
+          const address = await tx.address.create({ data: data.address });
+          addressId = address.id;
+        }
+
+        const user = await tx.user.create({
+          data: {
+            email: data.email,
+            password: hashedPassword,
+            firstName: data.firstName,
+            lastName: data.lastName,
+            phone: data.phone,
+            role: Role.tourist,
+            isActive: true,
+            tourist: {
+              create: {
+                membershipLevel: "bronze",
+                dateOfBirth: data.dateOfBirth
+                  ? new Date(data.dateOfBirth)
+                  : undefined,
+                nationality: data.nationality,
+                identityNumber: data.identityNumber,
+                emergencyContact: data.emergencyContact,
+                totalTrips: 0,
+                totalSpent: 0,
+                loyaltyPoints: 0,
+                ...(addressId && { addressId }),
+              },
             },
           },
-        },
-        include: {
-          tourist: true,
-        },
+          include: {
+            tourist: true,
+          },
+        });
+
+        return user;
       });
 
       return {
-        id: user.id,
-        email: user.email,
-        role: user.role,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        touristId: user.tourist?.id,
+        id: createdUser.id,
+        email: createdUser.email,
+        role: createdUser.role,
+        firstName: createdUser.firstName,
+        lastName: createdUser.lastName,
+        touristId: createdUser.tourist?.id,
       };
     } catch (error) {
       throw error;

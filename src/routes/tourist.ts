@@ -6,6 +6,7 @@ import { updateTouristProfileSchema } from "../validator/auth.validator";
 
 const router = Router();
 
+router.patch("/:id", authenticate, requireEmployee, validate(updateTouristProfileSchema) , TouristController.updateTouristByEmployee);
 router.patch("/profile", authenticate, requireTourist, validate(updateTouristProfileSchema) , TouristController.updateTouristProfile);
 router.get("/profile", authenticate, requireTourist, TouristController.getTouristProfile);
 router.get('/list', authenticate, requireEmployee, TouristController.getTouristList);

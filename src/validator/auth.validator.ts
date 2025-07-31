@@ -19,16 +19,26 @@ export const LoginSchema = z.object({
   password: z.string().min(1, "Password is required"),
 });
 
-export const createTouristSchema = z.object({
+export const CreateTouristSchema = z.object({
+  firstName: z.string(),
+  lastName: z.string(),
   email: z.email("Invalid email format"),
   password: z.string().min(8),
   confirmPassword: z.string().min(8),
-  firstName: z.string(),
-  lastName: z.string(),
   phone: z.string().optional(),
-  dateOfBirth: z.string().optional(),
   nationality: z.string().optional(),
   identityNumber: z.string().optional(),
+  emergencyContact: z.string().optional(),
+  dateOfBirth: z.string().optional(),
+  address: z
+    .object({
+      street: z.string().optional(),
+      city: z.string().optional(),
+      state: z.string().optional(),
+      postalCode: z.string().optional(),
+      country: z.string().optional(),
+    })
+    .optional(),
 });
 
 export const updateTouristProfileSchema = z.object({
@@ -39,6 +49,7 @@ export const updateTouristProfileSchema = z.object({
   nationality: z.string().optional(),
   identityNumber: z.string().optional(),
   emergencyContact: z.string().optional(),
+  isActive: z.boolean().optional(),
   address: z
     .object({
       street: z.string().optional(),

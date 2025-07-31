@@ -73,6 +73,27 @@ class TouristController {
             next(error)
         }
     }
+
+    static async updateTouristByEmployee (req: Request<{id: string}, {}, UpdateTouristProfile>, res: Response<ApiResponse>, next: NextFunction) {
+        try {
+            const touristId = req.params.id;
+            const data: UpdateTouristProfile = req.body;
+            if(!touristId) {
+                throw new ApiError("Tourist not found", 404);
+            }
+            const tourists = await TouristService.updateTouristByEmployee(
+              touristId,
+              data,
+            );
+            res.status(200).json({
+                success: true,
+                message: "Tourist list retrieved successfully",
+                data: tourists,
+            });
+        } catch (error) {
+            next(error)
+        }
+    }
 }
 
 export default TouristController;

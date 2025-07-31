@@ -4,6 +4,20 @@ import { RegisterRequestBody, LoginRequestBody } from "../types/auth";
 import { ApiResponse } from '../types/index';
 
 class AuthController {
+    static async employeeRegister(req: Request<{}, {}, RegisterRequestBody>, res: Response<ApiResponse>, next: NextFunction) {
+        try {
+            const data: RegisterRequestBody = req.body;
+            const registered = await AuthService.employeeRegister(data);
+            
+            res.status(201).json({
+                success: true,
+                message: 'Register success',
+                data: registered
+            })
+        } catch (error) {
+            next(error)
+        }
+    }
     static async register(req: Request<{}, {}, RegisterRequestBody>, res: Response<ApiResponse>, next: NextFunction) {
         try {
             const data: RegisterRequestBody = req.body;

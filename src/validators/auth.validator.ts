@@ -2,9 +2,9 @@ import { z } from "zod";
 
 export const RegisterSchema = z
   .object({
-    email: z.string().email(),
-    password: z.string().min(8),
-    confirmPassword: z.string().min(8),
+    email: z.email("Invalid email format"),
+    password: z.string().min(8, "Password must be at least 8 characters"),
+    confirmPassword: z.string().min(8, "Password must be at least 8 characters"),
     firstName: z.string().min(1),
     lastName: z.string().min(1),
     phone: z.string().optional(),
@@ -15,6 +15,6 @@ export const RegisterSchema = z
   });
 
 export const LoginSchema = z.object({
-  email: z.string().email("Invalid email format"),
+  email: z.email("Invalid email format"),
   password: z.string().min(1, "Password is required"),
 });

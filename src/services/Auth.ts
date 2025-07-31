@@ -16,11 +16,6 @@ class AuthService {
     data: RegisterRequestBody
   ): Promise<UserResponse> {
     try {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(data.email)) {
-        throw new ApiError("Please enter a valid email address", 400);
-      }
-
       const isEmailExist = await prisma.user.findUnique({
         where: {
           email: data.email,

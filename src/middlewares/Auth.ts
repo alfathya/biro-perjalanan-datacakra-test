@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken';
 import { prisma } from '../utils/prisma';
 import { ApiError } from '../utils/apiError';
 import { JwtPayload } from '../types/auth';
+import { Role } from "@prisma/client";
 
 export const authenticate = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -78,7 +79,6 @@ export const authorize = (...allowedRoles: string[]) => {
   };
 };
 
-export const requireAdmin = authorize('admin');
-export const requireEmployee = authorize('admin', 'employee');
-export const requireTourist = authorize('tourist');
-export const requireAnyRole = authorize('admin', 'employee', 'tourist');
+export const requireAdmin = authorize(Role.admin);
+export const requireEmployee = authorize(Role.admin, Role.employee);
+export const requireTourist = authorize(Role.tourist);

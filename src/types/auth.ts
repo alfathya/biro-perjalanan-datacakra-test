@@ -1,10 +1,12 @@
+import { JwtPayload as BaseJwtPayload } from "jsonwebtoken";
+import { Role } from "@prisma/client";
 declare global {
-    namespace Express {
+  namespace Express {
     interface Request {
       user?: {
         id: string;
         email: string;
-        role: string;
+        role: Role;
         firstName: string;
         lastName: string;
       };
@@ -12,13 +14,14 @@ declare global {
   }
 }
 
-export interface JwtPayload {
+export interface JwtPayload extends BaseJwtPayload {
   id: string;
   email: string;
-  role: string;
+  role: Role;
   firstName: string;
   lastName: string;
 }
+
 export interface RegisterRequestBody {
   email: string;
   password: string;

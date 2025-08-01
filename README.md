@@ -12,14 +12,14 @@ API untuk sistem manajemen biro perjalanan yang memungkinkan pengelolaan destina
 - **Bcrypt** - Password hashing
 - **Zod** - Validation
 
-## 📋 Prerequisites
+## Prerequisites
 
 Pastikan Anda telah menginstall:
 - Node.js (v16 atau lebih tinggi)
 - MySQL
 - npm atau yarn
 
-## 🛠️ Installation & Setup
+## Installation & Setup
 
 ### 1. Clone Repository
 ```bash
@@ -57,7 +57,7 @@ npx prisma migrate deploy
 npm run seed
 ```
 
-## 🚀 Deployment
+## Deployment
 
 ### Development
 ```bash
@@ -74,7 +74,7 @@ npm run build
 npm start
 ```
 
-## 📚 API Documentation
+## API Documentation
 
 ### Authentication Endpoints
 - `POST /api/auth/employee/register` - Registrasi employee (Admin only)
@@ -121,19 +121,20 @@ npm start
 - `POST /api/payments/my-payment` - Create payment for own trip (Tourist only)
 - `PATCH /api/payments/my-payment/:id/cancel` - Cancel payment (Tourist only)
 
-## 🔐 Authentication
+## Authentication
 
 API menggunakan JWT untuk authentication. Setelah login, sertakan token di header:
 ```
 Authorization: Bearer <your-jwt-token>
 ```
 
-## 👥 User Roles
+## User Roles
 
-1. **Employee** - Dapat mengelola semua data (destinations, tourists, trips, payments)
+1. **Employee** - Dapat mengelola data ( tourists, trips, payments)
 2. **Tourist** - Dapat mengelola profil sendiri, membuat trip, dan mengelola payment sendiri
+3. **Admin** - Dapat mengelola semua data
 
-## 📊 Database Schema
+## Database Schema
 
 ### User
 - Menyimpan data user (employee & tourist)
@@ -158,7 +159,7 @@ Authorization: Bearer <your-jwt-token>
 - Multiple payment methods
 - Status tracking
 
-## 🔧 Environment Variables
+## Environment Variables
 
 | Variable | Description | Required |
 |----------|-------------|----------|
@@ -166,7 +167,7 @@ Authorization: Bearer <your-jwt-token>
 | `DATABASE_URL` | MySQL connection string | Yes |
 | `JWT_SECRET` | Secret key untuk JWT | Yes |
 
-## 📝 API Response Format
+## API Response Format
 
 Semua response menggunakan format standar:
 ```json

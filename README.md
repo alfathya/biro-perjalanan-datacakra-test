@@ -77,49 +77,49 @@ npm start
 ## 📚 API Documentation
 
 ### Authentication Endpoints
-- `POST /api/auth/employee/register` - Registrasi employee
+- `POST /api/auth/employee/register` - Registrasi employee (Admin only)
 - `POST /api/auth/tourist/register` - Registrasi tourist
-- `POST /api/auth/tourist/register-by-employee` - Registrasi tourist oleh employee
+- `POST /api/auth/employee/tourist-register` - Registrasi tourist oleh employee
+- `POST /api/auth/employee/tourist-approve/:id` - Approve tourist
 - `POST /api/auth/login` - Login
-- `PUT /api/auth/approve-tourist/:id` - Approve tourist
 
 ### Destination Endpoints
-- `GET /api/destinations` - Get all destinations
-- `GET /api/destinations/:id` - Get destination by ID
-- `POST /api/destinations` - Create destination (Employee only)
-- `PUT /api/destinations/:id` - Update destination (Employee only)
-- `DELETE /api/destinations/:id` - Delete destination (Employee only)
+- `GET /api/destination` - Get all destinations
+- `GET /api/destination/detail/:id` - Get destination by ID
+- `POST /api/destination` - Create destination (Admin only)
+- `PUT /api/destination/:id` - Update destination (Admin only)
+- `DELETE /api/destination/:id` - Delete destination (Admin only)
 
 ### Tourist Endpoints
-- `GET /api/tourists` - Get all tourists (Employee only)
-- `GET /api/tourists/:id` - Get tourist detail (Employee only)
-- `GET /api/tourists/profile` - Get own profile (Tourist only)
-- `PUT /api/tourists/profile` - Update own profile (Tourist only)
-- `PUT /api/tourists/:id` - Update tourist by employee (Employee only)
-- `DELETE /api/tourists/:id` - Delete tourist (Employee only)
+- `GET /api/tourist/list` - Get all tourists (Employee only)
+- `GET /api/tourist/detail/:id` - Get tourist detail (Employee only)
+- `PATCH /api/tourist/:id` - Update tourist by employee (Employee only)
+- `DELETE /api/tourist/:id` - Delete tourist (Employee only)
+- `GET /api/tourist/profile` - Get own profile (Tourist only)
+- `PATCH /api/tourist/profile` - Update own profile (Tourist only)
 
 ### Trip Endpoints
-- `GET /api/trips` - Get all trips
-- `GET /api/trips/:id` - Get trip by ID
-- `GET /api/trips/my-trips` - Get own trips (Tourist only)
-- `GET /api/trips/tourist/:touristId` - Get trips by tourist ID
-- `POST /api/trips` - Create trip (Employee only)
-- `POST /api/trips/create-for-tourist` - Create trip for self (Tourist only)
-- `PUT /api/trips/:id` - Update trip
-- `PUT /api/trips/:id/rating` - Update trip rating
-- `DELETE /api/trips/:id` - Delete trip
+- `GET /api/trip/list` - Get all trips
+- `GET /api/trip/detail/:id` - Get trip by ID
+- `GET /api/trip/tourist/:touristId` - Get trips by tourist ID
+- `POST /api/trip/create` - Create trip (Employee only)
+- `PATCH /api/trip/:id` - Update trip
+- `DELETE /api/trip/:id` - Delete trip
+- `GET /api/trip/my-trips` - Get own trips (Tourist only)
+- `POST /api/trip/book` - Create trip for self (Tourist only)
+- `PUT /api/trip/rating/:id` - Update trip rating
 
 ### Payment Endpoints
-- `GET /api/payments` - Get all payments (Employee only)
-- `GET /api/payments/:id` - Get payment by ID
-- `GET /api/payments/trip/:tripId` - Get payment by trip ID
+- `GET /api/payment` - Get all payments (Employee only)
+- `GET /api/payment/:id` - Get payment by ID
+- `GET /api/payment/trip/:tripId` - Get payment by trip ID
+- `POST /api/payment` - Create payment (Employee only)
+- `PUT /api/payment/:id` - Update payment (Employee only)
+- `PUT /api/payment/:id/confirm` - Confirm payment (Employee only)
+- `DELETE /api/payment/:id` - Delete payment (Employee only)
 - `GET /api/payments/my-payments` - Get own payments (Tourist only)
-- `POST /api/payments` - Create payment (Employee only)
-- `POST /api/payments/create-my-payment` - Create payment for own trip (Tourist only)
-- `PUT /api/payments/:id` - Update payment (Employee only)
-- `PUT /api/payments/:id/confirm` - Confirm payment (Employee only)
-- `PUT /api/payments/:id/cancel` - Cancel payment (Tourist only)
-- `DELETE /api/payments/:id` - Delete payment (Employee only)
+- `POST /api/payments/my-payment` - Create payment for own trip (Tourist only)
+- `PATCH /api/payments/my-payment/:id/cancel` - Cancel payment (Tourist only)
 
 ## 🔐 Authentication
 

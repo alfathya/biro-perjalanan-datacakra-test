@@ -8,6 +8,7 @@ import { ApiError } from "../utils/apiError";
 class DestinationService {
   static async create(data: CreateDestinationRequest) {
     try {
+        console.log(data)
       return await prisma.destination.create({ data });
     } catch (error) {
       throw new ApiError("Failed to create destination", 500);

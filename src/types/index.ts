@@ -59,5 +59,3 @@ export interface CreateDestinationRequest {
 export interface UpdateDestinationRequest extends CreateDestinationRequest {
   id: string;
 }
-
-  

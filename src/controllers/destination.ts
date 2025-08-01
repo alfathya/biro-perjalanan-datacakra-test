@@ -9,6 +9,7 @@ class DestinationController {
     next: NextFunction
   ) {
     try {
+        console.log(req.body)
       const destination = await DestinationService.create(req.body);
       res.status(201).json({
         success: true,

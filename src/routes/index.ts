@@ -2,6 +2,7 @@ import { Request, Response, Router } from 'express';
 import AuthRouter from './Auth';
 import TouristRouter from './tourist';
 import DestinationRouter from './destination';
+import TripRouter from './trip';
 
 const router = Router();
 
@@ -12,5 +13,6 @@ router.get('/', (req: Request, res: Response) => {
 router.use('/auth', AuthRouter);
 router.use('/tourist', TouristRouter);
 router.use('/destination', DestinationRouter);
+router.use('/trip', TripRouter);
 
 export default router;

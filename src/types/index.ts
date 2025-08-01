@@ -45,4 +45,19 @@ export interface TripDetail extends Trip {
   cost: number;
   createdAt: Date;
 }
+
+export interface CreateDestinationRequest {
+  name: string;
+  country?: string;
+  city?: string;
+  latitude?: number;
+  longitude?: number;
+  description?: string;
+  imageUrl?: string;
+}
+
+export interface UpdateDestinationRequest extends CreateDestinationRequest {
+  id: string;
+}
+
   

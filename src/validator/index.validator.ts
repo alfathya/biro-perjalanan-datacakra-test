@@ -60,3 +60,15 @@ export const updateTouristProfileSchema = z.object({
     })
     .optional(),
 });
+
+export const createDestinationSchema = z.object({
+  name: z.string().min(1, "Name is required"),
+  country: z.string().optional(),
+  city: z.string().optional(),
+  latitude: z.number().optional(),
+  longitude: z.number().optional(),
+  description: z.string().optional(),
+  imageUrl: z.string().url().optional(),
+});
+
+export const updateDestinationSchema = createDestinationSchema.partial();

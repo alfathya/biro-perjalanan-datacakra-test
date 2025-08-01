@@ -133,7 +133,6 @@ class AuthService {
     data: CreateTouristRequest
   ): Promise<TouristResponse> {
     try {
-        console.log(data);
       const isEmailExist = await prisma.user.findUnique({
         where: {
           email: data.email,

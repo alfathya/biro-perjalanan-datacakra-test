@@ -1,0 +1,51 @@
+### Test My Payments Endpoint for Tourist
+### Base URL
+@baseUrl = http://localhost:3005/api
+
+### Tourist JWT Token (Jane Reels)
+@touristToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhlNTU4NjRjLTliMDYtNGVlMC05ZmJhLTcxODg4MzNlMzNjNyIsImVtYWlsIjoiamFuZUBtYWlsLnRlc3QiLCJyb2xlIjoidG91cmlzdCIsImZpcnN0TmFtZSI6IkphbmUiLCJsYXN0TmFtZSI6IlJlZWxzIiwiaWF0IjoxNzU0MDMwNjY4LCJleHAiOjE3NTQxMTcwNjh9
+
+### Test 1: Get My Payments as Tourist
+GET {{baseUrl}}/payment/my-payments
+Authorization: Bearer {{touristToken}}
+
+### Expected Response:
+# {
+#   "success": true,
+#   "message": "My payments retrieved successfully",
+#   "data": [
+#     {
+#       "id": "payment-id",
+#       "amount": 1500000,
+#       "method": "bank_transfer",
+#       "status": "paid",
+#       "transactionId": "TXN123456",
+#       "paymentDate": "2024-01-15T10:30:00.000Z",
+#       "notes": "Payment for Bali trip",
+#       "trip": {
+#         "id": "trip-id",
+#         "tanggalMulaiPerjalanan": "2024-02-01T00:00:00.000Z",
+#         "tanggalBerakhirPerjalanan": "2024-02-05T00:00:00.000Z",
+#         "participants": 2,
+#         "totalPrice": 1500000,
+#         "status": "confirmed",
+#         "destination": {
+#           "id": "dest-id",
+#           "name": "Bali",
+#           "country": "Indonesia",
+#           "city": "Denpasar"
+#         }
+#       }
+#     }
+#   ]
+# }
+
+### Test 2: Verify Tourist Cannot Access Admin Payment Endpoints
+GET {{baseUrl}}/payment
+Authorization: Bearer {{touristToken}}
+
+### Expected Response:
+# {
+#   "success": false,
+#   "message": "You do not have permission to access this resource"
+# }

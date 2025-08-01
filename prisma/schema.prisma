@@ -31,12 +31,14 @@ enum PaymentStatus {
   pending
   paid
   refunded
+  cancelled
 }
 
 enum TripStatus {
   planned
   confirmed
   cancelled
+  completed
 }
 
 model User {

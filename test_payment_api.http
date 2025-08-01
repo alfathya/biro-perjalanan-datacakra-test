@@ -1,0 +1,83 @@
+### Test Payment API - Updated with Trip Status Logic
+
+### Variables
+@baseUrl = http://localhost:3005/api
+@adminToken = your_admin_token_here
+@touristToken = your_tourist_token_here
+
+### 1. Admin - Get All Payments
+GET {{baseUrl}}/payments
+Authorization: Bearer {{adminToken}}
+
+### 2. Admin - Get Payment by ID
+GET {{baseUrl}}/payments/payment_id_here
+Authorization: Bearer {{adminToken}}
+
+### 3. Admin - Update Payment
+PUT {{baseUrl}}/payments/payment_id_here
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
+
+{
+  "amount": 1500000,
+  "method": "bank_transfer",
+  "status": "pending",
+  "notes": "Updated payment amount"
+}
+
+### 4. Admin - Delete Payment
+DELETE {{baseUrl}}/payments/payment_id_here
+Authorization: Bearer {{adminToken}}
+
+### 5. Admin - Confirm Payment (Updates Trip Status to 'confirmed')
+PATCH {{baseUrl}}/payments/payment_id_here/confirm
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
+
+{
+  "transactionId": "TXN123456789"
+}
+
+### 6. Tourist - Get My Payments
+GET {{baseUrl}}/payments/my-payments
+Authorization: Bearer {{touristToken}}
+
+### 7. Tourist - Create My Payment
+POST {{baseUrl}}/payments/my-payments
+Authorization: Bearer {{touristToken}}
+Content-Type: application/json
+
+{
+  "tripId": "trip_id_here",
+  "amount": 1200000,
+  "method": "credit_card",
+  "transactionId": "TXN987654321",
+  "notes": "Payment for Bali trip"
+}
+
+### 8. Tourist - Cancel My Payment (NEW - Updates Trip Status to 'cancelled')
+PATCH {{baseUrl}}/payments/my-payment/payment_id_here/cancel
+Authorization: Bearer {{touristToken}}
+
+### 9. Shared - Get Payment by Trip ID (Admin & Tourist)
+GET {{baseUrl}}/payments/trip/trip_id_here
+Authorization: Bearer {{touristToken}}
+
+### Test Scenarios for Payment-Trip Logic:
+
+### Scenario 1: Create Payment → Confirm Payment → Check Trip Status
+# 1. Create payment (status: pending, trip status: pending)
+# 2. Confirm payment (status: paid, trip status: confirmed)
+# 3. Verify trip status changed to 'confirmed'
+
+### Scenario 2: Create Payment → Cancel Payment → Check Trip Status  
+# 1. Create payment (status: pending, trip status: pending)
+# 2. Cancel payment (status: refunded, trip status: cancelled)
+# 3. Verify trip status changed to 'cancelled'
+
+### Notes:
+# - Employee access has been removed from all payment endpoints
+# - Only Admin and Tourist can access payment APIs
+# - Payment confirmation automatically updates trip status to 'confirmed'
+# - Payment cancellation automatically updates trip status to 'cancelled'
+# - All operations use Prisma transactions for data consistency

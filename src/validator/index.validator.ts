@@ -111,5 +111,36 @@ export const updateTripSchema = z.object({
   path: ["tanggalBerakhirPerjalanan"],
 });
 
+export const createPaymentSchema = z.object({
+  tripId: z.string().uuid("Trip ID harus berupa UUID yang valid"),
+  amount: z.number().min(0, "Amount tidak boleh negatif"),
+  method: z.enum(['cash', 'bank_transfer', 'credit_card', 'digital_wallet'], {
+    message: "Payment method harus salah satu dari: cash, bank_transfer, credit_card, digital_wallet"
+  }),
+  transactionId: z.string().optional(),
+  notes: z.string().optional(),
+});
+
+export const updatePaymentSchema = z.object({
+  amount: z.number().min(0, "Amount tidak boleh negatif").optional(),
+  method: z.enum(['cash', 'bank_transfer', 'credit_card', 'digital_wallet'], {
+    message: "Payment method harus salah satu dari: cash, bank_transfer, credit_card, digital_wallet"
+  }).optional(),
+  transactionId: z.string().optional(),
+  paymentDate: z.coerce.date().optional(),
+  notes: z.string().optional(),
+});
+
+export const VerifyPaymentSchema = z.object({
+  status: z
+    .enum(["paid", "refunded", "cancelled"])
+    .refine((val) => ["paid", "refunded", "cancelled"].includes(val), {
+      message:
+        "Only 'paid', 'refunded', or 'cancelled' are allowed for verification",
+    }),
+});
+
 export type CreateTripInput = z.infer<typeof createTripSchema>;
 export type UpdateTripInput = z.infer<typeof updateTripSchema>;
+export type CreatePaymentInput = z.infer<typeof createPaymentSchema>;
+export type UpdatePaymentInput = z.infer<typeof updatePaymentSchema>;

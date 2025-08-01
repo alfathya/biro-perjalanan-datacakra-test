@@ -1,0 +1,74 @@
+### Test Update Payment - All Fields
+
+### Variables
+@baseUrl = http://localhost:3005/api
+@adminToken = your_admin_token_here
+@paymentId = your_payment_id_here
+
+### 1. Test Update Payment dengan Semua Field
+PUT {{baseUrl}}/payments/{{paymentId}}
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
+
+{
+  "amount": 2750000,
+  "method": "credit_card",
+  "status": "pending",
+  "transactionId": "TXN20240115002",
+  "notes": "Updated payment amount - termasuk asuransi"
+}
+
+### 2. Test Update Payment - Hanya Amount dan Method
+PUT {{baseUrl}}/payments/{{paymentId}}
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
+
+{
+  "amount": 3000000,
+  "method": "bank_transfer"
+}
+
+### 3. Test Update Payment - Hanya Status dan Notes
+PUT {{baseUrl}}/payments/{{paymentId}}
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
+
+{
+  "status": "paid",
+  "notes": "Payment sudah lunas"
+}
+
+### 4. Test Update Payment - Semua Field Kecuali Status
+PUT {{baseUrl}}/payments/{{paymentId}}
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
+
+{
+  "amount": 2500000,
+  "method": "e_wallet",
+  "transactionId": "GOPAY123456789",
+  "notes": "Pembayaran via GoPay"
+}
+
+### Expected Response Format:
+# {
+#   "success": true,
+#   "message": "Payment berhasil diupdate",
+#   "data": {
+#     "id": "payment_id",
+#     "tripId": "trip_id",
+#     "amount": 2750000,        // ✅ Should be updated
+#     "method": "credit_card",   // ✅ Should be updated
+#     "status": "pending",       // ✅ Should be updated
+#     "transactionId": "TXN20240115002", // ✅ Should be updated
+#     "notes": "Updated payment amount - termasuk asuransi", // ✅ Should be updated
+#     "createdAt": "2024-01-15T10:30:00.000Z",
+#     "trip": { ... }
+#   }
+# }
+
+### Notes:
+# - Sekarang semua field (amount, method, status, transactionId, notes) bisa diupdate
+# - Field yang tidak disertakan dalam payload akan tetap menggunakan nilai lama
+# - Semua field di UpdatePaymentRequest bersifat optional
+# - Server sudah diperbaiki untuk menerima semua field yang dikirim

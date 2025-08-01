@@ -36,7 +36,6 @@ class AuthController {
     static async touristRegisterByEmployee(req: Request<{}, {}, CreateTouristRequest>, res: Response<ApiResponse>, next: NextFunction) {
         try {
             const data: CreateTouristRequest = req.body;
-            console.log(data)
             const registered = await AuthService.touristRegisterByEmployee(data);
             
             res.status(201).json({

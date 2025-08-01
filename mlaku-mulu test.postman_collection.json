@@ -1,0 +1,1126 @@
+{
+	"info": {
+		"_postman_id": "b78a8ba3-7fac-472e-9455-27d022153551",
+		"name": "mlaku-mulu test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17489214"
+	},
+	"item": [
+		{
+			"name": "tourist",
+			"item": [
+				{
+					"name": "{{L5000}}/api/tourist/register/employee",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImExZDBhODU1LWM2ZDMtNDU0MC1iZGViLTJlNjkxZjMzNGEzNSIsImVtYWlsIjoic3VjaUBtYWlsLnRlc3QiLCJyb2xlIjoiZW1wbG95ZWUiLCJmaXJzdE5hbWUiOiJzdWNpIiwibGFzdE5hbWUiOiJtYWhhcmFuaSIsImlhdCI6MTc1Mzk0ODY3NywiZXhwIjoxNzU0MDM1MDc3fQ.UuWe2rZg0TAKLRtGo3f5dJqahxhP2pSlrSouSJE-ucg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"john\",\r\n    \"lastName\": \"doe\",\r\n    \"email\": \"johndoe@mail.test\",\r\n    \"password\": \"turis123\",\r\n    \"confirmPassword\": \"turis123\",\r\n    \"phone\": \"08999998888\",\r\n    \"dateOfBirth\": \"2003-01-01\",\r\n    \"nationality\": \"Indonesia\", \r\n    \"identityNumber\": \"3209129938632\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{L5000}}/api/auth/employee/tourist-register",
+							"host": [
+								"{{L5000}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"employee",
+								"tourist-register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{L5000}}/api/auth/employee/register",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk3YjViNjA5LTU5Y2YtNGNmMC05NzdjLWIxMzg3Zjc4YzUzNSIsImVtYWlsIjoiYWRtaW5AbWxha3VtdWx1LmNvbSIsInJvbGUiOiJhZG1pbiIsImZpcnN0TmFtZSI6IlN1cGVyIiwibGFzdE5hbWUiOiJBZG1pbiIsImlhdCI6MTc1Mzk0NTY1MCwiZXhwIjoxNzU0MDMyMDUwfQ.AvV8TklfpkCZ9H0o8w_Yyu9VafqcsoKzY3P7h9WZfJo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"suci\",\r\n    \"lastName\": \"maharani\",\r\n    \"email\": \"suci@mail.test\",\r\n    \"password\": \"employee123\",\r\n    \"confirmPassword\": \"employee123\",\r\n    \"phone\": \"08987654321\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{L5000}}/api/auth/employee/register",
+							"host": [
+								"{{L5000}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"employee",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{L5000}}/api/auth/employee/tourist-approve/8e0c4985-ed0a-452f-b130-467cf0bea8a5",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImExZDBhODU1LWM2ZDMtNDU0MC1iZGViLTJlNjkxZjMzNGEzNSIsImVtYWlsIjoic3VjaUBtYWlsLnRlc3QiLCJyb2xlIjoiZW1wbG95ZWUiLCJmaXJzdE5hbWUiOiJzdWNpIiwibGFzdE5hbWUiOiJtYWhhcmFuaSIsImlhdCI6MTc1Mzk0ODY3NywiZXhwIjoxNzU0MDM1MDc3fQ.UuWe2rZg0TAKLRtGo3f5dJqahxhP2pSlrSouSJE-ucg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{L5000}}/api/auth/employee/tourist-approve/8e55864c-9b06-4ee0-9fba-7188833e33c7",
+							"host": [
+								"{{L5000}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"employee",
+								"tourist-approve",
+								"8e55864c-9b06-4ee0-9fba-7188833e33c7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{L5000}}/api/tourist/list?limit=2&page=1",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImExZDBhODU1LWM2ZDMtNDU0MC1iZGViLTJlNjkxZjMzNGEzNSIsImVtYWlsIjoic3VjaUBtYWlsLnRlc3QiLCJyb2xlIjoiZW1wbG95ZWUiLCJmaXJzdE5hbWUiOiJzdWNpIiwibGFzdE5hbWUiOiJtYWhhcmFuaSIsImlhdCI6MTc1Mzk0ODY3NywiZXhwIjoxNzU0MDM1MDc3fQ.UuWe2rZg0TAKLRtGo3f5dJqahxhP2pSlrSouSJE-ucg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{L5000}}/api/tourist/list?limit=2&page=1",
+							"host": [
+								"{{L5000}}"
+							],
+							"path": [
+								"api",
+								"tourist",
+								"list"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "2"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{L5000}}/api/tourist/detail/136f7d8e-d754-43e6-a566-55d9648b9500",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImExZDBhODU1LWM2ZDMtNDU0MC1iZGViLTJlNjkxZjMzNGEzNSIsImVtYWlsIjoic3VjaUBtYWlsLnRlc3QiLCJyb2xlIjoiZW1wbG95ZWUiLCJmaXJzdE5hbWUiOiJzdWNpIiwibGFzdE5hbWUiOiJtYWhhcmFuaSIsImlhdCI6MTc1Mzk0ODY3NywiZXhwIjoxNzU0MDM1MDc3fQ.UuWe2rZg0TAKLRtGo3f5dJqahxhP2pSlrSouSJE-ucg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{L5000}}/api/tourist/detail/136f7d8e-d754-43e6-a566-55d9648b9500",
+							"host": [
+								"{{L5000}}"
+							],
+							"path": [
+								"api",
+								"tourist",
+								"detail",
+								"136f7d8e-d754-43e6-a566-55d9648b9500"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{L5000}}/api/tourist/1a3903f0-a7b5-4bac-ad48-d73c1614c245",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImExZDBhODU1LWM2ZDMtNDU0MC1iZGViLTJlNjkxZjMzNGEzNSIsImVtYWlsIjoic3VjaUBtYWlsLnRlc3QiLCJyb2xlIjoiZW1wbG95ZWUiLCJmaXJzdE5hbWUiOiJzdWNpIiwibGFzdE5hbWUiOiJtYWhhcmFuaSIsImlhdCI6MTc1Mzk0ODY3NywiZXhwIjoxNzU0MDM1MDc3fQ.UuWe2rZg0TAKLRtGo3f5dJqahxhP2pSlrSouSJE-ucg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"firstName\": \"Andi\",\r\n  \"lastName\": \"Saputra\",\r\n  \"phone\": \"081234567890\",\r\n  \"nationality\": \"Indonesia\",\r\n  \"identityNumber\": \"3271012345670001\",\r\n  \"emergencyContact\": \"081212312312\",\r\n  \"membershipLevel\": \"silver\",\r\n  \"dateOfBirth\": \"1999-12-31\",\r\n  \"address\": {\r\n    \"street\": \"Jl. tigaraksa\", \r\n    \"city\": \"Tanggerang Selatan\",\r\n    \"state\": \"Banten\",\r\n    \"postalCode\": \"17819\",\r\n    \"country\": \"Indonesia\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{L5000}}/api/tourist/1a3903f0-a7b5-4bac-ad48-d73c1614c245",
+							"host": [
+								"{{L5000}}"
+							],
+							"path": [
+								"api",
+								"tourist",
+								"1a3903f0-a7b5-4bac-ad48-d73c1614c245"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{L5000}}/api/tourist/b25941ea-227f-40db-88cd-8d03b989975a",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImExZDBhODU1LWM2ZDMtNDU0MC1iZGViLTJlNjkxZjMzNGEzNSIsImVtYWlsIjoic3VjaUBtYWlsLnRlc3QiLCJyb2xlIjoiZW1wbG95ZWUiLCJmaXJzdE5hbWUiOiJzdWNpIiwibGFzdE5hbWUiOiJtYWhhcmFuaSIsImlhdCI6MTc1Mzk0ODY3NywiZXhwIjoxNzU0MDM1MDc3fQ.UuWe2rZg0TAKLRtGo3f5dJqahxhP2pSlrSouSJE-ucg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{L5000}}/api/tourist/b25941ea-227f-40db-88cd-8d03b989975a",
+							"host": [
+								"{{L5000}}"
+							],
+							"path": [
+								"api",
+								"tourist",
+								"b25941ea-227f-40db-88cd-8d03b989975a"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "destination",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{L5000}}/api/destination?limit=1&page=2",
+							"host": [
+								"{{L5000}}"
+							],
+							"path": [
+								"api",
+								"destination"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{L5000}}/api/destination/",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk3YjViNjA5LTU5Y2YtNGNmMC05NzdjLWIxMzg3Zjc4YzUzNSIsImVtYWlsIjoiYWRtaW5AbWxha3VtdWx1LmNvbSIsInJvbGUiOiJhZG1pbiIsImZpcnN0TmFtZSI6IlN1cGVyIiwibGFzdE5hbWUiOiJBZG1pbiIsImlhdCI6MTc1NDAyMzkwNSwiZXhwIjoxNzU0MTEwMzA1fQ.Wtkx62IicGCTDwJu9x4Rsda-qfeY5g29Vo5m2eDoF4o",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Grand Savero Hotel\",\r\n  \"country\": \"Indonesia\",\r\n  \"city\": \"Bogor\",\r\n  \"latitude\": -10.95,\r\n  \"longitude\": 201.2167,\r\n  \"description\": \"A Modern hotel in the middle of rain city\",\r\n  \"imageUrl\": \"https://example.com/images/savero.jpg\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{L5000}}/api/destination/",
+							"host": [
+								"{{L5000}}"
+							],
+							"path": [
+								"api",
+								"destination",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{L5000}}/api/destination/detail/3e28ce3d-a9bf-4514-aab8-41bc180cb47e",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{L5000}}/api/destination/detail/3e28ce3d-a9bf-4514-aab8-41bc180cb47e",
+							"host": [
+								"{{L5000}}"
+							],
+							"path": [
+								"api",
+								"destination",
+								"detail",
+								"3e28ce3d-a9bf-4514-aab8-41bc180cb47e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{L5000}}/api/destination/3e28ce3d-a9bf-4514-aab8-41bc180cb47e",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk3YjViNjA5LTU5Y2YtNGNmMC05NzdjLWIxMzg3Zjc4YzUzNSIsImVtYWlsIjoiYWRtaW5AbWxha3VtdWx1LmNvbSIsInJvbGUiOiJhZG1pbiIsImZpcnN0TmFtZSI6IlN1cGVyIiwibGFzdE5hbWUiOiJBZG1pbiIsImlhdCI6MTc1NDAyMzkwNSwiZXhwIjoxNzU0MTEwMzA1fQ.Wtkx62IicGCTDwJu9x4Rsda-qfeY5g29Vo5m2eDoF4o",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Harris Hotel Bali\",\r\n  \"country\": \"Indonesia\",\r\n  \"city\": \"Denpasar\",\r\n  \"latitude\": -8.65,\r\n  \"longitude\": 115.2167,\r\n  \"description\": \"A tropical paradise known for its beaches, temples, and vibrant culture.\",\r\n  \"imageUrl\": \"https://example.com/images/bali.jpg\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{L5000}}/api/destination/3e28ce3d-a9bf-4514-aab8-41bc180cb47e",
+							"host": [
+								"{{L5000}}"
+							],
+							"path": [
+								"api",
+								"destination",
+								"3e28ce3d-a9bf-4514-aab8-41bc180cb47e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{L5000}}/api/destination/5f3250dc-1d8d-46f3-b875-48afa535eb7b",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk3YjViNjA5LTU5Y2YtNGNmMC05NzdjLWIxMzg3Zjc4YzUzNSIsImVtYWlsIjoiYWRtaW5AbWxha3VtdWx1LmNvbSIsInJvbGUiOiJhZG1pbiIsImZpcnN0TmFtZSI6IlN1cGVyIiwibGFzdE5hbWUiOiJBZG1pbiIsImlhdCI6MTc1NDAyMzkwNSwiZXhwIjoxNzU0MTEwMzA1fQ.Wtkx62IicGCTDwJu9x4Rsda-qfeY5g29Vo5m2eDoF4o",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{L5000}}/api/destination/5f3250dc-1d8d-46f3-b875-48afa535eb7b",
+							"host": [
+								"{{L5000}}"
+							],
+							"path": [
+								"api",
+								"destination",
+								"5f3250dc-1d8d-46f3-b875-48afa535eb7b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "trip",
+			"item": [
+				{
+					"name": "{{L5000}}/api/trip/create",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImExZDBhODU1LWM2ZDMtNDU0MC1iZGViLTJlNjkxZjMzNGEzNSIsImVtYWlsIjoic3VjaUBtYWlsLnRlc3QiLCJyb2xlIjoiZW1wbG95ZWUiLCJmaXJzdE5hbWUiOiJzdWNpIiwibGFzdE5hbWUiOiJtYWhhcmFuaSIsImlhdCI6MTc1Mzk0ODY3NywiZXhwIjoxNzU0MDM1MDc3fQ.UuWe2rZg0TAKLRtGo3f5dJqahxhP2pSlrSouSJE-ucg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"touristId\": \"1a3903f0-a7b5-4bac-ad48-d73c1614c245\",\r\n  \"destinationId\": \"06885925-3bc2-472f-9877-e86796f4c2ec\",\r\n  \"tanggalMulaiPerjalanan\": \"2025-08-15\",\r\n  \"tanggalBerakhirPerjalanan\": \"2025-08-20\",\r\n  \"participants\": 4,\r\n  \"totalPrice\": 15000000,\r\n  \"notes\": \"Trip keluarga untuk liburan sekolah\",\r\n  \"specialRequests\": \"Butuh kamar yang connecting, makanan halal\",\r\n  \"status\": \"planned\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{L5000}}/api/trip/create",
+							"host": [
+								"{{L5000}}"
+							],
+							"path": [
+								"api",
+								"trip",
+								"create"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{L5000}}/api/trip/list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImExZDBhODU1LWM2ZDMtNDU0MC1iZGViLTJlNjkxZjMzNGEzNSIsImVtYWlsIjoic3VjaUBtYWlsLnRlc3QiLCJyb2xlIjoiZW1wbG95ZWUiLCJmaXJzdE5hbWUiOiJzdWNpIiwibGFzdE5hbWUiOiJtYWhhcmFuaSIsImlhdCI6MTc1Mzk0ODY3NywiZXhwIjoxNzU0MDM1MDc3fQ.UuWe2rZg0TAKLRtGo3f5dJqahxhP2pSlrSouSJE-ucg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{L5000}}/api/trip/list",
+							"host": [
+								"{{L5000}}"
+							],
+							"path": [
+								"api",
+								"trip",
+								"list"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{L5000}}/api/trip/detail/8ab591b4-10ba-49bc-9341-5a4383ea9bfb",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImExZDBhODU1LWM2ZDMtNDU0MC1iZGViLTJlNjkxZjMzNGEzNSIsImVtYWlsIjoic3VjaUBtYWlsLnRlc3QiLCJyb2xlIjoiZW1wbG95ZWUiLCJmaXJzdE5hbWUiOiJzdWNpIiwibGFzdE5hbWUiOiJtYWhhcmFuaSIsImlhdCI6MTc1Mzk0ODY3NywiZXhwIjoxNzU0MDM1MDc3fQ.UuWe2rZg0TAKLRtGo3f5dJqahxhP2pSlrSouSJE-ucg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{L5000}}/api/trip/detail/8ab591b4-10ba-49bc-9341-5a4383ea9bfb",
+							"host": [
+								"{{L5000}}"
+							],
+							"path": [
+								"api",
+								"trip",
+								"detail",
+								"8ab591b4-10ba-49bc-9341-5a4383ea9bfb"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{L5000}}/api/trip/8ab591b4-10ba-49bc-9341-5a4383ea9bfb",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImExZDBhODU1LWM2ZDMtNDU0MC1iZGViLTJlNjkxZjMzNGEzNSIsImVtYWlsIjoic3VjaUBtYWlsLnRlc3QiLCJyb2xlIjoiZW1wbG95ZWUiLCJmaXJzdE5hbWUiOiJzdWNpIiwibGFzdE5hbWUiOiJtYWhhcmFuaSIsImlhdCI6MTc1Mzk0ODY3NywiZXhwIjoxNzU0MDM1MDc3fQ.UuWe2rZg0TAKLRtGo3f5dJqahxhP2pSlrSouSJE-ucg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"touristId\": \"1a3903f0-a7b5-4bac-ad48-d73c1614c245\",\r\n  \"destinationId\": \"06885925-3bc2-472f-9877-e86796f4c2ec\",\r\n  \"tanggalMulaiPerjalanan\": \"2025-08-15\",\r\n  \"tanggalBerakhirPerjalanan\": \"2025-08-20\",\r\n  \"participants\": 2,\r\n  \"totalPrice\": 2000000,\r\n  \"notes\": \"Trip pasangan untuk honeymoon\",\r\n  \"specialRequests\": \"makanan halal\",\r\n  \"status\": \"planned\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{L5000}}/api/trip/8ab591b4-10ba-49bc-9341-5a4383ea9bfb",
+							"host": [
+								"{{L5000}}"
+							],
+							"path": [
+								"api",
+								"trip",
+								"8ab591b4-10ba-49bc-9341-5a4383ea9bfb"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{L5000}}/api/trip/63792692-e787-480e-907f-32a2e80967da",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImExZDBhODU1LWM2ZDMtNDU0MC1iZGViLTJlNjkxZjMzNGEzNSIsImVtYWlsIjoic3VjaUBtYWlsLnRlc3QiLCJyb2xlIjoiZW1wbG95ZWUiLCJmaXJzdE5hbWUiOiJzdWNpIiwibGFzdE5hbWUiOiJtYWhhcmFuaSIsImlhdCI6MTc1Mzk0ODY3NywiZXhwIjoxNzU0MDM1MDc3fQ.UuWe2rZg0TAKLRtGo3f5dJqahxhP2pSlrSouSJE-ucg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{L5000}}/api/trip/63792692-e787-480e-907f-32a2e80967da",
+							"host": [
+								"{{L5000}}"
+							],
+							"path": [
+								"api",
+								"trip",
+								"63792692-e787-480e-907f-32a2e80967da"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{L5000}}/api/trip/my-trips",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhlNTU4NjRjLTliMDYtNGVlMC05ZmJhLTcxODg4MzNlMzNjNyIsImVtYWlsIjoiamFuZUBtYWlsLnRlc3QiLCJyb2xlIjoidG91cmlzdCIsImZpcnN0TmFtZSI6IkphbmUiLCJsYXN0TmFtZSI6IlJlZWxzIiwiaWF0IjoxNzU0MDMwNjY4LCJleHAiOjE3NTQxMTcwNjh9.yXn0RRs-dnbsK6KwJPUmyl7Rt-m3KLR_XqzfFfHnIac",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{L5000}}/api/trip/my-trips",
+							"host": [
+								"{{L5000}}"
+							],
+							"path": [
+								"api",
+								"trip",
+								"my-trips"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{L5000}}/api/trip/book",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhlNTU4NjRjLTliMDYtNGVlMC05ZmJhLTcxODg4MzNlMzNjNyIsImVtYWlsIjoiamFuZUBtYWlsLnRlc3QiLCJyb2xlIjoidG91cmlzdCIsImZpcnN0TmFtZSI6IkphbmUiLCJsYXN0TmFtZSI6IlJlZWxzIiwiaWF0IjoxNzU0MDMwNjY4LCJleHAiOjE3NTQxMTcwNjh9.yXn0RRs-dnbsK6KwJPUmyl7Rt-m3KLR_XqzfFfHnIac",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"destinationId\": \"501b3080-fe9e-4e46-9847-90a8ac361976\",\r\n  \"tanggalMulaiPerjalanan\": \"2025-12-25\", \r\n  \"tanggalBerakhirPerjalanan\": \"2026-01-02\",\r\n  \"participants\": 2,\r\n  \"totalPrice\": 8000000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{L5000}}/api/trip/book",
+							"host": [
+								"{{L5000}}"
+							],
+							"path": [
+								"api",
+								"trip",
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{L5000}}/api/trip/rating/47972556-080a-4ffa-a5ee-5152ac6cbdc4",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhlNTU4NjRjLTliMDYtNGVlMC05ZmJhLTcxODg4MzNlMzNjNyIsImVtYWlsIjoiamFuZUBtYWlsLnRlc3QiLCJyb2xlIjoidG91cmlzdCIsImZpcnN0TmFtZSI6IkphbmUiLCJsYXN0TmFtZSI6IlJlZWxzIiwiaWF0IjoxNzU0MDMwNjY4LCJleHAiOjE3NTQxMTcwNjh9.yXn0RRs-dnbsK6KwJPUmyl7Rt-m3KLR_XqzfFfHnIac",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"rating\": 5,\r\n  \"review\": \"Trip yang sangat luar biasa! Terima kasih atas pelayanan yang excellent!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{L5000}}/api/trip/rating/47972556-080a-4ffa-a5ee-5152ac6cbdc4",
+							"host": [
+								"{{L5000}}"
+							],
+							"path": [
+								"api",
+								"trip",
+								"rating",
+								"47972556-080a-4ffa-a5ee-5152ac6cbdc4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "payment",
+			"item": [
+				{
+					"name": "{{L5000}}/api/payment/",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImExZDBhODU1LWM2ZDMtNDU0MC1iZGViLTJlNjkxZjMzNGEzNSIsImVtYWlsIjoic3VjaUBtYWlsLnRlc3QiLCJyb2xlIjoiZW1wbG95ZWUiLCJmaXJzdE5hbWUiOiJzdWNpIiwibGFzdE5hbWUiOiJtYWhhcmFuaSIsImlhdCI6MTc1NDAzNTc0MywiZXhwIjoxNzU0MTIyMTQzfQ._k-mozoHeahMw7m1izWJH9ceiHaSXWO3iM9ZEDCAsSY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"tripId\": \"3358050c-4a56-4a46-836d-7c044f70cf0d\",\r\n  \"amount\": 2500000,\r\n  \"method\": \"bank_transfer\",\r\n  \"transactionId\": \"TXN20240115001\",\r\n  \"notes\": \"Payment untuk trip Bali - 5 hari 4 malam\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{L5000}}/api/payment/",
+							"host": [
+								"{{L5000}}"
+							],
+							"path": [
+								"api",
+								"payment",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{L5000}}/api/payment",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImExZDBhODU1LWM2ZDMtNDU0MC1iZGViLTJlNjkxZjMzNGEzNSIsImVtYWlsIjoic3VjaUBtYWlsLnRlc3QiLCJyb2xlIjoiZW1wbG95ZWUiLCJmaXJzdE5hbWUiOiJzdWNpIiwibGFzdE5hbWUiOiJtYWhhcmFuaSIsImlhdCI6MTc1NDAzNTc0MywiZXhwIjoxNzU0MTIyMTQzfQ._k-mozoHeahMw7m1izWJH9ceiHaSXWO3iM9ZEDCAsSY",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{L5000}}/api/payment",
+							"host": [
+								"{{L5000}}"
+							],
+							"path": [
+								"api",
+								"payment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{L5000}}/api/payment/e284892b-336d-4de4-ba26-494989bf3807",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImExZDBhODU1LWM2ZDMtNDU0MC1iZGViLTJlNjkxZjMzNGEzNSIsImVtYWlsIjoic3VjaUBtYWlsLnRlc3QiLCJyb2xlIjoiZW1wbG95ZWUiLCJmaXJzdE5hbWUiOiJzdWNpIiwibGFzdE5hbWUiOiJtYWhhcmFuaSIsImlhdCI6MTc1NDAzNTc0MywiZXhwIjoxNzU0MTIyMTQzfQ._k-mozoHeahMw7m1izWJH9ceiHaSXWO3iM9ZEDCAsSY",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{L5000}}/api/payment/e284892b-336d-4de4-ba26-494989bf3807",
+							"host": [
+								"{{L5000}}"
+							],
+							"path": [
+								"api",
+								"payment",
+								"e284892b-336d-4de4-ba26-494989bf3807"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{L5000}}/api/payment/e284892b-336d-4de4-ba26-494989bf3807",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImExZDBhODU1LWM2ZDMtNDU0MC1iZGViLTJlNjkxZjMzNGEzNSIsImVtYWlsIjoic3VjaUBtYWlsLnRlc3QiLCJyb2xlIjoiZW1wbG95ZWUiLCJmaXJzdE5hbWUiOiJzdWNpIiwibGFzdE5hbWUiOiJtYWhhcmFuaSIsImlhdCI6MTc1NDAzNTc0MywiZXhwIjoxNzU0MTIyMTQzfQ._k-mozoHeahMw7m1izWJH9ceiHaSXWO3iM9ZEDCAsSY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"amount\": 2750000,\r\n  \"method\": \"credit_card\",\r\n  \"status\": \"pending\",\r\n  \"transactionId\": \"TXN20240115002\",\r\n  \"notes\": \"Updated payment amount - termasuk asuransi\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{L5000}}/api/payment/e284892b-336d-4de4-ba26-494989bf3807",
+							"host": [
+								"{{L5000}}"
+							],
+							"path": [
+								"api",
+								"payment",
+								"e284892b-336d-4de4-ba26-494989bf3807"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{L5000}}/api/payment/e284892b-336d-4de4-ba26-494989bf3807/confirm",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImExZDBhODU1LWM2ZDMtNDU0MC1iZGViLTJlNjkxZjMzNGEzNSIsImVtYWlsIjoic3VjaUBtYWlsLnRlc3QiLCJyb2xlIjoiZW1wbG95ZWUiLCJmaXJzdE5hbWUiOiJzdWNpIiwibGFzdE5hbWUiOiJtYWhhcmFuaSIsImlhdCI6MTc1NDAzNTc0MywiZXhwIjoxNzU0MTIyMTQzfQ._k-mozoHeahMw7m1izWJH9ceiHaSXWO3iM9ZEDCAsSY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"transactionId\": \"CONFIRMED_TXN20240115003\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{L5000}}/api/payment/e284892b-336d-4de4-ba26-494989bf3807/confirm",
+							"host": [
+								"{{L5000}}"
+							],
+							"path": [
+								"api",
+								"payment",
+								"e284892b-336d-4de4-ba26-494989bf3807",
+								"confirm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{L5000}}/api/payment/my-payments",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhlNTU4NjRjLTliMDYtNGVlMC05ZmJhLTcxODg4MzNlMzNjNyIsImVtYWlsIjoiamFuZUBtYWlsLnRlc3QiLCJyb2xlIjoidG91cmlzdCIsImZpcnN0TmFtZSI6IkphbmUiLCJsYXN0TmFtZSI6IlJlZWxzIiwiaWF0IjoxNzU0MDMwNjY4LCJleHAiOjE3NTQxMTcwNjh9.yXn0RRs-dnbsK6KwJPUmyl7Rt-m3KLR_XqzfFfHnIac",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{L5000}}/api/payment/my-payments",
+							"host": [
+								"{{L5000}}"
+							],
+							"path": [
+								"api",
+								"payment",
+								"my-payments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{L5000}}/api/payment/my-payment",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhlNTU4NjRjLTliMDYtNGVlMC05ZmJhLTcxODg4MzNlMzNjNyIsImVtYWlsIjoiamFuZUBtYWlsLnRlc3QiLCJyb2xlIjoidG91cmlzdCIsImZpcnN0TmFtZSI6IkphbmUiLCJsYXN0TmFtZSI6IlJlZWxzIiwiaWF0IjoxNzU0MDMwNjY4LCJleHAiOjE3NTQxMTcwNjh9.yXn0RRs-dnbsK6KwJPUmyl7Rt-m3KLR_XqzfFfHnIac",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"tripId\": \"47972556-080a-4ffa-a5ee-5152ac6cbdc4\",\r\n  \"amount\": 8000000,\r\n  \"method\": \"bank_transfer\",\r\n  \"transactionId\": \"TXN20240115001\",\r\n  \"notes\": \"Payment untuk trip Bali - 5 hari 4 malam\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{L5000}}/api/payment/my-payment",
+							"host": [
+								"{{L5000}}"
+							],
+							"path": [
+								"api",
+								"payment",
+								"my-payment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{L5000}}/api/payment/my-payment/28e9c1f3-3027-4b9a-8a15-f57e0e6358b0/cancel",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhlNTU4NjRjLTliMDYtNGVlMC05ZmJhLTcxODg4MzNlMzNjNyIsImVtYWlsIjoiamFuZUBtYWlsLnRlc3QiLCJyb2xlIjoidG91cmlzdCIsImZpcnN0TmFtZSI6IkphbmUiLCJsYXN0TmFtZSI6IlJlZWxzIiwiaWF0IjoxNzU0MDMwNjY4LCJleHAiOjE3NTQxMTcwNjh9.yXn0RRs-dnbsK6KwJPUmyl7Rt-m3KLR_XqzfFfHnIac",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"tripId\": \"47972556-080a-4ffa-a5ee-5152ac6cbdc4\",\r\n  \"amount\": 8000000,\r\n  \"method\": \"bank_transfer\",\r\n  \"transactionId\": \"TXN20240115001\",\r\n  \"notes\": \"Payment untuk trip Bali - 5 hari 4 malam\"\r\n}"
+						},
+						"url": {
+							"raw": "{{L5000}}/api/payment/my-payment/28e9c1f3-3027-4b9a-8a15-f57e0e6358b0/cancel",
+							"host": [
+								"{{L5000}}"
+							],
+							"path": [
+								"api",
+								"payment",
+								"my-payment",
+								"28e9c1f3-3027-4b9a-8a15-f57e0e6358b0",
+								"cancel"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "{{L5000}}/api/auth/register",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Jane\",\r\n    \"lastName\": \"Doe\",\r\n    \"email\": \"jane@mail.test\",\r\n    \"password\": \"janedoe123\",\r\n    \"confirmPassword\": \"janedoe123\",\r\n    \"phone\": \"089988223345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{L5000}}/api/auth/tourist/register",
+					"host": [
+						"{{L5000}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"tourist",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{L5000}}/api/auth/login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"jane@mail.test\",\r\n    \"password\": \"janedoe123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{L5000}}/api/auth/login",
+					"host": [
+						"{{L5000}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{L5000}}/api/tourist/profile",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhlNTU4NjRjLTliMDYtNGVlMC05ZmJhLTcxODg4MzNlMzNjNyIsImVtYWlsIjoiamFuZUBtYWlsLnRlc3QiLCJyb2xlIjoidG91cmlzdCIsImZpcnN0TmFtZSI6IkphbmUiLCJsYXN0TmFtZSI6IkRvZSIsImlhdCI6MTc1Mzk1NTAzNSwiZXhwIjoxNzU0MDQxNDM1fQ.JLLVtnZO7XNeBwbPBMJDGAeo2ZrORUjWwBBVm0ieZMQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Jane\",\r\n  \"lastName\": \"Reels\",\r\n  \"phone\": \"08121212123\",\r\n  \"nationality\": \"Indonesia\",\r\n  \"dateOfBirth\": \"1990-05-01\",\r\n  \"identityNumber\": \"32098837236634\",\r\n  \"address\": {\r\n    \"street\": \"Jl. Mawar\",\r\n    \"city\": \"Jakarta\",\r\n    \"country\": \"Indonesia\",\r\n    \"postalCode\": \"16710\"\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{L5000}}/api/tourist/profile",
+					"host": [
+						"{{L5000}}"
+					],
+					"path": [
+						"api",
+						"tourist",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{L5000}}/api/tourist/profile",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhlNTU4NjRjLTliMDYtNGVlMC05ZmJhLTcxODg4MzNlMzNjNyIsImVtYWlsIjoiamFuZUBtYWlsLnRlc3QiLCJyb2xlIjoidG91cmlzdCIsImZpcnN0TmFtZSI6IkphbmUiLCJsYXN0TmFtZSI6IkRvZSIsImlhdCI6MTc1Mzk1NTAzNSwiZXhwIjoxNzU0MDQxNDM1fQ.JLLVtnZO7XNeBwbPBMJDGAeo2ZrORUjWwBBVm0ieZMQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{L5000}}/api/tourist/profile",
+					"host": [
+						"{{L5000}}"
+					],
+					"path": [
+						"api",
+						"tourist",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

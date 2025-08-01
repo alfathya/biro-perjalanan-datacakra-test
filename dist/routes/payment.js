@@ -1,0 +1,20 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const payment_1 = require("../controllers/payment");
+const Auth_1 = require("../middlewares/Auth");
+const validate_1 = require("../middlewares/validate");
+const index_validator_1 = require("../validator/index.validator");
+const router = (0, express_1.Router)();
+router.get("/trip/:tripId", Auth_1.authenticate, payment_1.paymentController.getPaymentByTripId);
+// Routes untuk tourist - hanya bisa akses payment mereka sendiri
+router.get("/my-payments", Auth_1.authenticate, Auth_1.requireTourist, payment_1.paymentController.getMyPayments);
+router.post("/my-payment", Auth_1.authenticate, Auth_1.requireTourist, (0, validate_1.validate)(index_validator_1.createPaymentSchema), payment_1.paymentController.createMyPayment);
+router.patch("/my-payment/:id/cancel", Auth_1.authenticate, Auth_1.requireTourist, payment_1.paymentController.cancelMyPayment);
+router.get("/", Auth_1.authenticate, Auth_1.requireEmployee, payment_1.paymentController.getAllPayments);
+router.get("/:id", Auth_1.authenticate, Auth_1.requireEmployee, payment_1.paymentController.getPaymentById);
+router.post("/", Auth_1.authenticate, Auth_1.requireEmployee, (0, validate_1.validate)(index_validator_1.createPaymentSchema), payment_1.paymentController.createPayment);
+router.put("/:id", Auth_1.authenticate, Auth_1.requireEmployee, (0, validate_1.validate)(index_validator_1.updatePaymentSchema), payment_1.paymentController.updatePayment);
+router.delete("/:id", Auth_1.authenticate, Auth_1.requireEmployee, payment_1.paymentController.deletePayment);
+router.patch("/:id/confirm", Auth_1.authenticate, Auth_1.requireEmployee, payment_1.paymentController.confirmPayment);
+exports.default = router;

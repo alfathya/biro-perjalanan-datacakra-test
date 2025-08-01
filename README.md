@@ -19,6 +19,10 @@ Pastikan Anda telah menginstall:
 - MySQL
 - npm atau yarn
 
+## Base URL API
+
+```biro-perjalanan-datacakra-test-production.up.railway.app```
+
 ## Installation & Setup
 
 ### 1. Clone Repository

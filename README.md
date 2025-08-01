@@ -1,179 +1,112 @@
 # Biro Perjalanan API
 
-API untuk sistem manajemen biro perjalanan yang memungkinkan pengelolaan destinasi, tourist, trip, dan payment.
+API untuk sistem manajemen biro perjalanan yang mengelola destinasi, wisatawan, perjalanan, dan pembayaran.
 
-## Teknologi yang Digunakan
+## Quick Start
 
-- **Node.js** dengan **TypeScript**
-- **Express.js** - Web framework
-- **Prisma** - ORM untuk database
-- **MySQL** - Database
-- **JWT** - Authentication
-- **Bcrypt** - Password hashing
-- **Zod** - Validation
-
-## Prerequisites
-
-Pastikan Anda telah menginstall:
-- Node.js (v16 atau lebih tinggi)
+### Prerequisites
+- Node.js (v16+)
 - MySQL
-- npm atau yarn
+- npm
 
-## Base URL API
-
-```biro-perjalanan-datacakra-test-production.up.railway.app```
-
-## Installation & Setup
-
-### 1. Clone Repository
+### Installation
 ```bash
 git clone https://github.com/alfathya/biro-perjalanan-datacakra-test.git
 cd biro-perjalanan-datacakra-test
-```
-
-### 2. Install Dependencies
-```bash
 npm install
-```
-
-### 3. Environment Configuration
-Buat file `.env` berdasarkan `example.env`:
-```bash
 cp example.env .env
-```
-
-Isi file `.env` dengan konfigurasi yang sesuai:
-```env
-PORT=3000
-DATABASE_URL="mysql://username:password@localhost:3306/biro_perjalanan"
-JWT_SECRET="your-super-secret-jwt-key"
-```
-
-### 4. Database Setup
-```bash
-# Generate Prisma Client
-npx prisma generate
-
-# Run database migrations
+# Edit .env dengan konfigurasi database
 npx prisma migrate deploy
-
-# Seed database dengan data awal (opsional)
 npm run seed
-```
-
-## Deployment
-
-### Development
-```bash
 npm run dev
 ```
-Server akan berjalan di `http://localhost:3000`
 
-### Production
-```bash
-# Build aplikasi
-npm run build
-
-# Start production server
-npm start
-```
-
-## API Documentation
-
-### Authentication Endpoints
-- `POST /api/auth/employee/register` - Registrasi employee (Admin only)
-- `POST /api/auth/tourist/register` - Registrasi tourist
-- `POST /api/auth/employee/tourist-register` - Registrasi tourist oleh employee
-- `POST /api/auth/employee/tourist-approve/:id` - Approve tourist
-- `POST /api/auth/login` - Login
-
-### Destination Endpoints
-- `GET /api/destination` - Get all destinations
-- `GET /api/destination/detail/:id` - Get destination by ID
-- `POST /api/destination` - Create destination (Admin only)
-- `PUT /api/destination/:id` - Update destination (Admin only)
-- `DELETE /api/destination/:id` - Delete destination (Admin only)
-
-### Tourist Endpoints
-- `GET /api/tourist/list` - Get all tourists (Employee only)
-- `GET /api/tourist/detail/:id` - Get tourist detail (Employee only)
-- `PATCH /api/tourist/:id` - Update tourist by employee (Employee only)
-- `DELETE /api/tourist/:id` - Delete tourist (Employee only)
-- `GET /api/tourist/profile` - Get own profile (Tourist only)
-- `PATCH /api/tourist/profile` - Update own profile (Tourist only)
-
-### Trip Endpoints
-- `GET /api/trip/list` - Get all trips
-- `GET /api/trip/detail/:id` - Get trip by ID
-- `GET /api/trip/tourist/:touristId` - Get trips by tourist ID
-- `POST /api/trip/create` - Create trip (Employee only)
-- `PATCH /api/trip/:id` - Update trip
-- `DELETE /api/trip/:id` - Delete trip
-- `GET /api/trip/my-trips` - Get own trips (Tourist only)
-- `POST /api/trip/book` - Create trip for self (Tourist only)
-- `PUT /api/trip/rating/:id` - Update trip rating
-
-### Payment Endpoints
-- `GET /api/payment` - Get all payments (Employee only)
-- `GET /api/payment/:id` - Get payment by ID
-- `GET /api/payment/trip/:tripId` - Get payment by trip ID
-- `POST /api/payment` - Create payment (Employee only)
-- `PUT /api/payment/:id` - Update payment (Employee only)
-- `PUT /api/payment/:id/confirm` - Confirm payment (Employee only)
-- `DELETE /api/payment/:id` - Delete payment (Employee only)
-- `GET /api/payments/my-payments` - Get own payments (Tourist only)
-- `POST /api/payments/my-payment` - Create payment for own trip (Tourist only)
-- `PATCH /api/payments/my-payment/:id/cancel` - Cancel payment (Tourist only)
+### Base URL
+- Production: `biro-perjalanan-datacakra-test-production.up.railway.app`
+- Local: `http://localhost:3000`
 
 ## Authentication
 
-API menggunakan JWT untuk authentication. Setelah login, sertakan token di header:
+Semua endpoint (kecuali register/login) memerlukan JWT token:
 ```
 Authorization: Bearer <your-jwt-token>
 ```
 
-## User Roles
+### User Roles
+- **Admin**: Mengelola semua data sistem
+- **Employee**: Mengelola data tourists, trips, dan payments
+- **Tourist**: Mengelola profil sendiri dan melakukan booking
 
-1. **Employee** - Dapat mengelola data ( tourists, trips, payments)
-2. **Tourist** - Dapat mengelola profil sendiri, membuat trip, dan mengelola payment sendiri
-3. **Admin** - Dapat mengelola semua data
+## API Endpoints
 
-## Database Schema
+### Authentication
+Mengelola registrasi, login, dan approval user.
 
-### User
-- Menyimpan data user (employee & tourist)
-- Role-based access control
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/auth/employee/register` | Registrasi employee baru (Admin only) |
+| POST | `/api/auth/tourist/register` | Registrasi tourist baru |
+| POST | `/api/auth/employee/tourist-register` | Employee mendaftarkan tourist |
+| POST | `/api/auth/employee/tourist-approve/:id` | Approve registrasi tourist |
+| POST | `/api/auth/login` | Login untuk semua role |
 
-### Tourist
-- Profile lengkap tourist
-- Membership level (bronze, silver, gold, platinum)
-- Loyalty points dan statistik
+### Destinations
+Mengelola data destinasi wisata.
 
-### Destination
-- Data destinasi wisata
-- Informasi lokasi dan deskripsi
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/destination` | Ambil semua destinasi |
+| GET | `/api/destination/detail/:id` | Detail destinasi berdasarkan ID |
+| POST | `/api/destination` | Tambah destinasi baru (Admin only) |
+| PUT | `/api/destination/:id` | Update destinasi (Admin only) |
+| DELETE | `/api/destination/:id` | Hapus destinasi (Admin only) |
 
-### Trip
-- Data perjalanan
-- Status trip (planned, confirmed, cancelled, completed)
-- Rating dan review
+### Tourists
+Mengelola data dan profil tourist.
 
-### Payment
-- Data pembayaran
-- Multiple payment methods
-- Status tracking
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/tourist/list` | Daftar semua tourist (Employee only) |
+| GET | `/api/tourist/detail/:id` | Detail tourist (Employee only) |
+| PATCH | `/api/tourist/:id` | Update data tourist (Employee only) |
+| DELETE | `/api/tourist/:id` | Hapus tourist (Employee only) |
+| GET | `/api/tourist/profile` | Profil sendiri (Tourist only) |
+| PATCH | `/api/tourist/profile` | Update profil sendiri (Tourist only) |
 
-## Environment Variables
+### Trips
+Mengelola data perjalanan dan booking.
 
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `PORT` | Port server | No (default: 3000) |
-| `DATABASE_URL` | MySQL connection string | Yes |
-| `JWT_SECRET` | Secret key untuk JWT | Yes |
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/trip/list` | Daftar semua trip |
+| GET | `/api/trip/detail/:id` | Detail trip berdasarkan ID |
+| GET | `/api/trip/tourist/:touristId` | Trip berdasarkan tourist ID |
+| POST | `/api/trip/create` | Buat trip baru (Employee only) |
+| PATCH | `/api/trip/:id` | Update trip (Employee only) |
+| DELETE | `/api/trip/:id` | Hapus trip (Employee only) |
+| GET | `/api/trip/my-trips` | Trip milik sendiri (Tourist only) |
+| POST | `/api/trip/book` | Booking trip (Tourist only) |
+| PUT | `/api/trip/rating/:id` | Beri rating trip (Tourist only) |
 
-## API Response Format
+### Payments
+Mengelola pembayaran dan transaksi.
 
-Semua response menggunakan format standar:
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/payment` | Daftar semua payment (Employee only) |
+| GET | `/api/payment/:id` | Detail payment berdasarkan ID |
+| GET | `/api/payment/trip/:tripId` | Payment berdasarkan trip ID |
+| POST | `/api/payment` | Buat payment baru (Employee only) |
+| PUT | `/api/payment/:id` | Update payment (Employee only) |
+| PUT | `/api/payment/:id/confirm` | Konfirmasi payment (Employee only) |
+| DELETE | `/api/payment/:id` | Hapus payment (Employee only) |
+| GET | `/api/payments/my-payments` | Payment milik sendiri (Tourist only) |
+| POST | `/api/payments/my-payment` | Buat payment sendiri (Tourist only) |
+| PATCH | `/api/payments/my-payment/:id/cancel` | Cancel payment (Tourist only) |
+
+## Response Format
+
+### Success Response
 ```json
 {
   "success": true,
@@ -188,9 +121,7 @@ Semua response menggunakan format standar:
 }
 ```
 
-## Error Handling
-
-Error response format:
+### Error Response
 ```json
 {
   "success": false,
@@ -198,3 +129,37 @@ Error response format:
   "error": "Detailed error information"
 }
 ```
+
+## Environment Variables
+
+```env
+PORT=3000
+DATABASE_URL="mysql://user:password@host:port/database"
+JWT_SECRET="your-secret-key"
+```
+
+## Testing
+
+Import Postman collection: `mlaku-mulu test.postman_collection.json`
+
+Set environment variables:
+- `baseUrl`: Server URL (https://biro-perjalanan-datacakra-test-production.up.railway.app/)
+- `adminToken`: Admin JWT token
+- `employeeToken`: Employee JWT token  
+- `touristToken`: Tourist JWT token
+
+## Deployment
+
+### Local Development
+```bash
+npm run dev
+```
+
+### Production
+```bash
+npm run build
+npm start
+```
+
+## Tech Stack
+Node.js, TypeScript, Express.js, Prisma, MySQL, JWT

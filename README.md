@@ -2,6 +2,10 @@
 
 API untuk sistem manajemen biro perjalanan yang mengelola destinasi, wisatawan, perjalanan, dan pembayaran.
 
+## Diagram
+![ERD Diagram](https://drive.google.com/uc?export=view&id=1KUghNkYUiNk-mrDFOKTfaUQLj0IiBNZ_)
+
+
 ## Quick Start
 
 ### Prerequisites
